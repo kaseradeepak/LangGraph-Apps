@@ -8,6 +8,7 @@
 # Detect urgency
 # Return to parent graph
 
+import time
 from typing import Literal
 from typing_extensions import TypedDict
 from langgraph.graph import StateGraph, START, END
@@ -77,13 +78,19 @@ result = parent_graph.invoke({
 
 print(result)
 
-# START → validate_query → detect_urgency → END
+# START → validate_query → detect_urgency → END of Subgraph -> support_agent (parent graph)
 
+# Real-Life analogy for Subgraph -
+# Suppose a hospital has an intake workflow 
+    # - take patient details
+    # - check emergency level
+    # - check the department and so 
 
-
-
-
-
+# Same workflow can be reused in a sub-department as well
+    # - OPD
+    # - emergency checkup
+    # - medicines
+    # - test & checkup
 
 
 
