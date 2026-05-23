@@ -22,6 +22,7 @@ def classify_query(state: SupportedState):
     else:
         category = "general"
     
+    # Every Node should just return the parameters it wants to update in the state. 
     return {"category" : category}
 
 # Node-2
@@ -49,7 +50,8 @@ builder = StateGraph(SupportedState)
 builder.add_node("classify_query", classify_query)
 builder.add_node("answer_query", answer_query)
 
-# add edges.
+# add edges -> It will decide the flow of execution.
+# add_edge(x, y) : x -> y
 builder.add_edge(START, "classify_query")
 builder.add_edge("classify_query", "answer_query")
 builder.add_edge("answer_query", END)
